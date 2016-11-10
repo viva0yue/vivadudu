@@ -19,11 +19,23 @@
 
       <% @reviews.each do |review| %>
       <tr>
-        <td><%= review.user.first_name %></td>
+        <td>
+          <% if review.user.present? %>
+            <a href="/users/<%= review.user.id %>">
+              <%= review.user.first_name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= review.star %></td>
         <td><%= review.content %></td>
         <td><img src='<%= review.photo %>' class='img-responsive'></td>
-        <td><%= review.restaurant.name %></td>
+        <td>
+          <% if review.restaurant.present? %>
+            <a href="/restaurants/<%= review.restaurant.id %>">
+              <%= review.restaurant.name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/reviews/<%= review.id %>" class="btn btn-primary">Show</a>
           <a href="/reviews/<%= review.id %>/edit" class="btn btn-warning">Edit</a>
