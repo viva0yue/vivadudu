@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "users#index"
   # Routes for the Review resource:
   # CREATE
   get "/reviews/new", :controller => "reviews", :action => "new"
